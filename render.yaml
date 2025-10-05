@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: blogsite
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn blogsite.wsgi:application"
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: "dev-secret-key"
+      - key: WEB_CONCURRENCY
+        value: 4
